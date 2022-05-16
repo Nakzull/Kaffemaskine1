@@ -26,6 +26,13 @@ namespace Kaffemaskine1
             set { cupsOfTea = value; }
         }
 
+        private bool espresso;
+
+        public bool Espresso
+        {
+            get { return espresso; }
+            set { espresso = value; }
+        }
 
         public void EmptyCoffee()
         {
@@ -44,6 +51,18 @@ namespace Kaffemaskine1
             int water = watercontainer.Water;
             CupsOfTea = water / 200;
             watercontainer.Water = 0;
+        }
+
+        public void MakeEspresso()
+        {
+            watercontainer.Water -= 200;
+            Espresso = false;
+            Console.WriteLine("Made one cup of espresso");
+        }
+
+        public void InsertEspresso()
+        {
+            Espresso = true;
         }
 
         public void AddWater(int addWater)
@@ -67,7 +86,16 @@ namespace Kaffemaskine1
 
         public override void PowerOn()
         {
-            if (teaContainer.Teabag == true)
+            if (espresso == true)
+            {
+                if (watercontainer.Water >= 200)
+                {
+                    MakeEspresso();
+                }
+                else
+                    Console.WriteLine("Please add water");
+            }
+            else if (teaContainer.Teabag == true)
             {
                 if (watercontainer.Water > 0)
                 {
@@ -76,7 +104,7 @@ namespace Kaffemaskine1
                 else
                     Console.WriteLine("Please add water");
             }
-            if (coffeeContainer.Filter == true)
+            else if (coffeeContainer.Filter == true)
             {
                 if (watercontainer.Water > 0)
                 {

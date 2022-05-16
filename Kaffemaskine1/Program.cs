@@ -10,7 +10,7 @@ namespace Kaffemaskine1
             int choice;
             while (true)
             {
-                Console.WriteLine("1. Add water\n2. Empty coffee container\n3. Remove filter\n4. Add filter\n5. Add coffee powder\n6. Turn on machine\n7. Turn off machine\n8. Add teabag\n9. Remove teabag");
+                Console.WriteLine("1. Add water\n2. Empty coffee container\n3. Remove filter\n4. Add filter\n5. Add coffee powder\n6. Turn on machine\n7. Turn off machine\n8. Add teabag\n9. Remove teabag\n10. Insert espresso pack");
                 choice = Convert.ToInt32(Console.ReadLine());
                 if (choice == 1)
                 {
@@ -71,6 +71,10 @@ namespace Kaffemaskine1
                 else if (choice == 9)
                 {
                     coffeeMachine.RemoveTeabag();
+                }
+                else if (choice == 10)
+                {
+                    coffeeMachine.InsertEspresso();
                 }
                 else
                     Console.WriteLine("Please choose a valid option");
